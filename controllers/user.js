@@ -1,4 +1,5 @@
-const User = require('../models/user')
+const User = require('../models/user');
+const {errorHandler} = require('../helpers/dbErrorHandler');
 
 exports.inregistrare = (req, res) => {
     console.log('req.body', req.body);
@@ -6,7 +7,7 @@ exports.inregistrare = (req, res) => {
     user.save((err,user) =>{
         if(err){
             return res.status(400).json({
-                err
+                error: errorHandler(err)
             })
         }
         res.json({
