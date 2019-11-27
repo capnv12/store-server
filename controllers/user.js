@@ -10,6 +10,8 @@ exports.inregistrare = (req, res) => {
                 error: errorHandler(err)
             })
         }
+        user.salt = undefined
+        user.hashed_parola = undefined
         res.json({
             user
         })
