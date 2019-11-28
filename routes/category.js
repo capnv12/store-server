@@ -1,14 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const { userById } = require('../controllers/user')
+const { create } = require('../controllers/category')
 const {requireLogare, isAdmin, isAuth} = require('../controllers/auth')
+const { userById } = require('../controllers/user')
 
-router.get('/secret/:userId', requireLogare, isAuth, isAdmin, (req, res) => {
-    res.json({
-        user: req.profile
-    })
-})
+router.post('/categorie/creare/:userId', requireLogare, isAuth, isAdmin, create);
 
 router.param('userId', userById)
 

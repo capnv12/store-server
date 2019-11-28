@@ -25,7 +25,6 @@ const userSchema = new mongoose.Schema({
     },
     indetificator:{
         type: String,
-        unique:32
     },
     taraFacturare:{
         type: String,
@@ -95,6 +94,10 @@ userSchema.virtual('password')
 })
 
 userSchema.methods = {
+    authenticate: function(plainText){
+        return this.encryptPassword(plainText) === this.hashed_parola;
+    },
+
     encryptPassword: function(password){
         if(!password) return '';
         try{
