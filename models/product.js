@@ -26,7 +26,7 @@ const productSchema = new mongoose.Schema({
     },
     categorie:{
         type:ObjectId,
-        ref: 'Category',
+        ref: 'SubCategory',
         required:true
     },
     pret:{
