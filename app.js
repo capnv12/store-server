@@ -10,6 +10,8 @@ const expressValidator = require('express-validator')
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
 const categoryRoutes = require('./routes/category')
+const subCategoryRoutes = require('./routes/subCategory')
+const productRoutes = require('./routes/product')
 
 //app
 const app = express();
@@ -33,6 +35,8 @@ app.use(expressValidator())
 app.use('/api',authRoutes)
 app.use('/api',userRoutes)
 app.use('/api',categoryRoutes)
+app.use('/api',productRoutes)
+app.use('/api',subCategoryRoutes)
 
 const port = process.env.PORT || 8000;
 

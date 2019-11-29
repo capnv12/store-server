@@ -20,13 +20,9 @@ const productSchema = new mongoose.Schema({
         required:true,
         maxlength:32
     },
-    brandLogo:{
-        type:Buffer,
-        content:String
-    },
     categorie:{
         type:ObjectId,
-        ref: 'SubCategory',
+        ref:'SubCategory',
         required:true
     },
     pret:{
@@ -71,7 +67,6 @@ const productSchema = new mongoose.Schema({
     },photo: {
         data: Buffer,
         content: String,
-        required:true
     },
     photo1: {
         data: Buffer,
@@ -88,6 +83,10 @@ const productSchema = new mongoose.Schema({
     video: {
         data: Buffer,
         content: String
+    },
+    sold:{
+        type: Number,
+        'default': 0
     },
     rating: {
         type: Number,

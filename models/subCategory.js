@@ -10,7 +10,7 @@ const subCategorySchema = new mongoose.Schema({
     },
     categorie:{
         type:ObjectId,
-        ref: 'Category',
+        ref:'Category',
         required:true
     }
 }, {timestamps:true})
