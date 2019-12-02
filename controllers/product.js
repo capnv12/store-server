@@ -285,23 +285,33 @@ exports.photo = (req, res, next) =>{
         res.set('Content-Type',req.product.photo.contentType)
         return res.send(req.product.photo.data)
     }
-    // if(req.product.photo1.data) {
-    //     res.set('Content-Type',req.product.photo1.contentType)
-    //     return res.send(req.product.photo1.data)
-    // }
-    // if(req.product.photo2.data) {
-    //     res.set('Content-Type',req.product.photo2.contentType)
-    //     return res.send(req.product.photo2.data)
-    // }
-    // if(req.product.photo3.data) {
-    //     res.set('Content-Type',req.product.photo3.contentType)
-    //     return res.send(req.product.photo3.data)
-    // }
-    // if(req.product.video.data) {
-    //     res.set('Content-Type',req.product.video.contentType)
-    //     return res.send(req.product.video.data)
-    // }
 }
+exports.photo1 = (req, res, next) =>{
+    if(req.product.photo1.data) {
+        res.set('Content-Type',req.product.photo1.contentType)
+        return res.send(req.product.photo1.data)
+    }
+}
+exports.photo2 = (req, res, next) =>{
+    if(req.product.photo2.data) {
+        res.set('Content-Type',req.product.photo2.contentType)
+        return res.send(req.product.photo2.data)
+    }
+}
+exports.photo3 = (req, res, next) =>{
+    if(req.product.photo3.data) {
+        res.set('Content-Type',req.product.photo3.contentType)
+        return res.send(req.product.photo3.data)
+    }
+}
+exports.video = (req, res, next) =>{
+    if(req.product.video.data) {
+        res.set('Content-Type',req.product.video.contentType)
+        return res.send(req.product.video.data)
+    }
+}
+
+
 // exports.listCategories = (req, res) => {
 //     Product.distinct('category', {}, (err, categorie) => {
 //         if(err){
