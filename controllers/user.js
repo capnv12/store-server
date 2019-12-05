@@ -14,7 +14,7 @@ exports.userById = (req,res,next,id) => {
 }
 
 exports.read = (req, res) => {
-    req.profile.hashed_parola = undefined
+    req.profile.hashed_password = undefined
     req.profile.salt = undefined
     return res.json(req.profile)
 
@@ -26,7 +26,7 @@ exports.update = (req, res) => {
                 error: 'Nu esti autorizat pentru a face aceste operatiuni'
             })
         }
-        user.hashed_parola = undefined
+        user.hashed_password = undefined
         user.salt = undefined
         res.json(user)
     })

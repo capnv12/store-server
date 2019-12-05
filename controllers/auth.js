@@ -13,7 +13,7 @@ exports.inregistrare = (req, res) => {
                 })
             }
             user.salt = undefined
-            user.hashed_parola = undefined
+            user.hashed_password = undefined
             res.json({
                 user
             })
@@ -23,9 +23,9 @@ exports.inregistrare = (req, res) => {
 exports.logare = (req, res) => {
     const {email, password} = req.body
     User.findOne({email}, (err, user) => {
-        if(err || !user){
+        if(!user){
             return res.status(400).json({
-                err:'Nu exista utilizator cu acest email. Te rugam inregistreaza-te'
+                error:'Nu exista utilizator cu acest email. Te rugam inregistreaza-te'
             })
         }
         if(!user.authenticate(password)){
