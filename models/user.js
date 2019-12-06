@@ -81,6 +81,11 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false
     },
+    checkbox:{
+        type: Boolean,
+        default:false,
+        required:true
+    },
     salt:String,
     history:{
         type:Array,

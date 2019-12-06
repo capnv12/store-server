@@ -23,7 +23,6 @@ const productSchema = new mongoose.Schema({
     categorie:{
         type:ObjectId,
         ref:'SubCategory',
-        required:true
     },
     pret:{
         type:Number,
@@ -42,8 +41,7 @@ const productSchema = new mongoose.Schema({
         maxlength:32
     },
     inStoc:{
-        type:Boolean,
-        required:true
+        type:'',
     },
     cantitate:{
         type:Number,

@@ -86,3 +86,14 @@ exports.remove = (req, res) => {
         })
     })
 }
+
+exports.list = (req, res) => {
+    SubCategory.find().exec((err, subCategory) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            })
+        }
+        res.json(subCategory)
+    })
+}
