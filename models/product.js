@@ -14,6 +14,12 @@ const productSchema = new mongoose.Schema({
         required:true,
         maxlength:2000
     },
+    descriereScurta:{
+        type:String,
+        trim: true,
+        required:true,
+        maxlength:200
+    },
     brand:{
         type:String,
         trim: true,
