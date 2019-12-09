@@ -216,6 +216,23 @@ exports.list = (req, res) => {
             res.json(products)
         })
 }
+exports.listInCategory = (req,res) => {
+    let limit = req.query.limit ? parseInt(req.query.limit) : 6
+
+    Product.find({_id: req.product, categorie: req.product.categorie})
+    .limit(limit)
+    .populate('subCategory', '_id name')
+    .exec((err, products) => {
+        if(err){
+            if(err){
+            return res.status(400).json({
+                error:"Produsele nu au fost gasite"
+            })
+        }
+        }
+        res.json(products)
+    })
+}
 
 exports.listRelated = (req,res) => {
     let limit = req.query.limit ? parseInt(req.query.limit) : 6

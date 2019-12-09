@@ -53,7 +53,10 @@ const productSchema = new mongoose.Schema({
         maxlength:32
     },
     inStoc:{
-        type:'',
+        type:Number,
+        'default': 0,
+        min: 0,
+        max: 1
     },
     cantitate:{
         type:Number,
@@ -97,6 +100,13 @@ const productSchema = new mongoose.Schema({
     sold:{
         type: Number,
         'default': 0
+    },
+    inregistrare:{
+        type: Number,
+        'default': 0,
+        min: 0,
+        max: 1
+
     },
     rating: {
         type: Number,
