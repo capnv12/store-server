@@ -13,6 +13,8 @@ const userRoutes = require('./routes/user')
 const categoryRoutes = require('./routes/category')
 const subCategoryRoutes = require('./routes/subCategory')
 const productRoutes = require('./routes/product')
+const brandRountes = require('./routes/brand')
+const tipProdusRountes = require('./routes/tipProdus')
 
 //app
 const app = express();
@@ -39,6 +41,8 @@ app.use('/api',userRoutes)
 app.use('/api',categoryRoutes)
 app.use('/api',productRoutes)
 app.use('/api',subCategoryRoutes)
+app.use('/api',brandRountes)
+app.use('/api',tipProdusRountes)
 
 const port = process.env.PORT || 8000;
 

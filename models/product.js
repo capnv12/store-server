@@ -27,10 +27,8 @@ const productSchema = new mongoose.Schema({
         maxlength:200
     },
     brand:{
-        type:String,
-        trim: true,
-        required:true,
-        maxlength:32
+        type:ObjectId,
+        ref:'Brand',
     },
     categorie:{
         type:ObjectId,
