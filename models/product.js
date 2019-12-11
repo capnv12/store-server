@@ -62,9 +62,8 @@ const productSchema = new mongoose.Schema({
         maxlength:32
     },
     tipProdus:{
-        type:String,
-        trim: true,
-        maxlength:32
+        type:ObjectId,
+        ref:'TipProdus',
     },
     specificatii:{
         type:String,
