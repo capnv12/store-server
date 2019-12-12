@@ -24,7 +24,7 @@ const productSchema = new mongoose.Schema({
         type:String,
         trim: true,
         required:true,
-        maxlength:200
+        maxlength:64
     },
     brand:{
         type:ObjectId,
@@ -103,7 +103,10 @@ const productSchema = new mongoose.Schema({
         'default': 0,
         min: 0,
         max: 1
-
+    },
+    ordine:{
+        type: Number,
+        'default': 0
     },
     rating: {
         type: Number,
