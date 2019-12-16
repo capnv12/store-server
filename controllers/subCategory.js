@@ -1,7 +1,9 @@
 const SubCategory = require('../models/subCategory')
+const Product = require('../models/product')
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const formidable = require('formidable')
 const _ = require('lodash')
+const slugify = require('slugify');
 
 exports.subCategoryById = (req,res,next,id) => {
     // SubCategory.findById(id).exec((err, subCategory) => {
@@ -98,3 +100,29 @@ exports.list = (req, res) => {
     })
 }
 
+exports.prodInCategory = (req, res, next) => {
+    const slug = req.params.slug.toLowerCase();
+
+    SubCategory.findOne({ slug }).exec((err, subCategory) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            });
+        }
+        // res.json(category);
+        Product.find({ categorie: subCategory })
+            .populate('categories', '_id nume')
+            // .populate('tags', '_id name slug')
+            // .populate('postedBy', '_id name username')
+            .select('_id nume slug excerpt categories postedBy tags createdAt updatedAt')
+            .exec((err, data) => {
+                if (err) {
+                    return res.status(400).json({
+                        error: errorHandler(err)
+                    });
+                }
+                res.json({ subCategory: subCategory, products: data });
+            });
+    });
+
+};

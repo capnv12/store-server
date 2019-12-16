@@ -8,6 +8,11 @@ const subCategorySchema = new mongoose.Schema({
         required:true,
         maxlength:32
     },
+    slug:{
+        type:String,
+        unique:true,
+        index:true
+    },
     categorie:{
         type:ObjectId,
         ref:'Category',

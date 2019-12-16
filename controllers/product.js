@@ -339,3 +339,22 @@ exports.video = (req, res, next) =>{
 //         res.json(categorie)
 //     })
 // }
+
+exports.listSearch = (req, res) => {
+    const query = {}
+
+    if(req.query.search){
+        query.nume = {$regex: req.query.search, $options:'i'}
+        if(req.query.categorie && req.query.categorie !='All'){
+            query.categorie = req.query.categorie
+        }
+        Product.find(query, (err, products) => {
+            if(err) {
+                return res.status(400).json({
+                    error: errorHandler(err)
+                })
+            }
+            res.json(products)
+        }).select('-photo')
+    }
+}
