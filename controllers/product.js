@@ -16,7 +16,29 @@ exports.productById = (req,res,next,id) => {
     })
 }
 
+exports.productBySlug = (req,res,next) => {
+    const slug = req.params.slug.toLowerCase();
+
+    Product.find({slug}).exec((err, data) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            });
+        }
+        res.json(data);
+        next()
+    });
+}
+
 exports.read = (req, res) => {
+    req.product.photo = undefined
+    req.product.photo1 = undefined
+    req.product.photo2 = undefined
+    req.product.photo3 = undefined
+    req.product.video = undefined
+    return res.json(req.product)
+}
+exports.readBySlug = (req, res) => {
     req.product.photo = undefined
     req.product.photo1 = undefined
     req.product.photo2 = undefined

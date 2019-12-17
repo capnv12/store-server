@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
 
-const { create, productById, read, remove, update, list, listRelated, listCategories, listBySearch, photo, photo1,photo2,photo3,video,listInCategory,listSearch } = require('../controllers/product')
+const { create, productById, productBySlug, read,readBySlug, remove, update, list, listRelated, listCategories, listBySearch, photo, photo1,photo2,photo3,video,listInCategory,listSearch } = require('../controllers/product')
 const {requireLogare, isAdmin, isAuth} = require('../controllers/auth')
 const { userById } = require('../controllers/user')
 
 router.get('/produs/:productId', read)
+router.get('/produsul/:slug', productBySlug)
 router.post('/produs/creare/:userId', requireLogare, isAuth, isAdmin, create);
 router.delete('/produs/:productId/:userId', requireLogare, isAuth, isAdmin, remove)
 router.put('/produs/:productId/:userId', requireLogare, isAuth, isAdmin, update)
@@ -24,5 +25,6 @@ router.get("/produs/video/:productId", video);
 
 router.param('userId', userById)
 router.param('productId', productById)
+// router.param('productSlug', productBySlug)
 
 module.exports = router;

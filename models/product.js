@@ -8,6 +8,11 @@ const productSchema = new mongoose.Schema({
         required:true,
         maxlength:32
     },
+    slug:{
+        type:String,
+        unique:true,
+        index:true
+    },
     subtitlu:{
         type:String,
         trim: true,
