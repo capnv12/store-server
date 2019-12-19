@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
         type: String,
     },
     telefon:{
-        type:Number,
+        type:String,
     },
     taraFacturare:{
         type: String,
